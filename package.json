@@ -1,0 +1,20 @@
+{
+  "name": "bamboo-test",
+  "version": "1.0.0",
+  "description": "test-suite for bamboo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ganache-cli": "^6.0.3",
+    "mocha": "^4.0.1",
+    "shelljs": "^0.7.8",
+    "web3": "^1.0.0-beta.26"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}
