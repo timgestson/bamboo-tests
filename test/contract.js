@@ -1,5 +1,7 @@
 let shell = require('shelljs');
 
+// TODO: use truffle-contract?
+
 module.exports = class Contract{
   constructor(web3, file){
     let abi = JSON.parse(
@@ -23,6 +25,10 @@ module.exports = class Contract{
     .send({
        from: options.from,
        gas: 6721975
+     }).then((contract)=> {
+       // Why is this needed?
+       contract.setProvider(this._contract._provider)
+       return contract
      })
   }
 }

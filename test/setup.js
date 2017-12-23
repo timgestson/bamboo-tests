@@ -1,6 +1,5 @@
 let ganache = require("ganache-cli");
 let Web3 = require('web3')
-let assert = require("assert")
 
 
 before(function(done){
