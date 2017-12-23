@@ -1,7 +1,7 @@
 let shell = require('shelljs');
 let assert = require("assert")
   
-describe("test vault contract", function(){
+describe("test auction contract", function(){
   it("should create successfully", function(done){
     const file = "./contracts/00b_auction_more.bbo"
     let testContract = new Contract(this.web3, file)

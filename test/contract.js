@@ -2,8 +2,16 @@ let shell = require('shelljs');
 
 module.exports = class Contract{
   constructor(web3, file){
-    let abi = JSON.parse(shell.exec(`bamboo --abi < ${file}`).stdout)
-    this.bytecode = shell.exec(`bamboo < ${file}`).stdout.trim()
+    let abi = JSON.parse(
+      shell.exec(
+        `bamboo --abi < ${file}`,
+        { silent: true }
+      ).stdout
+    )
+    this.bytecode = shell.exec(
+      `bamboo < ${file}`,
+      { silent: true }
+    ).stdout.trim()
     this._contract = new web3.eth.Contract(abi)
   }
 
