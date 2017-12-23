@@ -1,6 +1,6 @@
-let shell = require('shelljs');
 let assert = require("assert")
-  
+let Contract = require("./contract")
+
 describe("test auction contract", function(){
   it("should create successfully", function(done){
     const file = "./contracts/00b_auction_more.bbo"
@@ -13,19 +13,19 @@ describe("test auction contract", function(){
       from: this.primaryAccount 
     })
     .then((contractInstance) => {
-       this.contractInstance = contractInstance
-       done()
+      this.contractInstance = contractInstance
+      done()
     })
   })
   
   it("should accept a bid", function(done){
     this.contractInstance.methods.bid().send({
-     from: this.account,
-     value: 100,
-     gas: 6721975
+      from: this.account,
+      value: 100,
+      gas: 6721975
     })
     .on("receipt",(value) => {
-       done()
+      done()
     })
   })
 })

@@ -9,12 +9,12 @@ describe("test vault contract", function(){
     this.secondaryAccount = this.accounts[1]
     this.hotWallet = this.accounts[2]
     testContract.deploy({
-       from: this.primaryAccount,
-       arguments: [ this.primaryAccount, this.secondaryAccount ]
-     })
+      from: this.primaryAccount,
+      arguments: [ this.primaryAccount, this.secondaryAccount ]
+    })
     .then((contractInstance) => {
-       this.contractInstance = contractInstance
-       done()
+      this.contractInstance = contractInstance
+      done()
     })
   })
 
@@ -28,19 +28,19 @@ describe("test vault contract", function(){
 
   it("should unvault", function(done){
     this.contractInstance.methods.unvault(100, this.hotWallet)
-     .send({
+    .send({
       from: this.primaryAccount,
       gas: 6721975
-     })
-    .on("reciept", done)
+    })
+    .on("reciept", () => {done()})
     .on("error", done)
   })
 
   it("should redeem", function(done){
     this.contractInstance.methods.redeem()
      .send({
-      from: this.primaryAccount,
-      gas: 6721975
+       from: this.primaryAccount,
+       gas: 6721975
      })
     .then(()=>{
       done()
@@ -49,10 +49,10 @@ describe("test vault contract", function(){
 
   it("should deny recover from non-secondary key", function(done){
     this.contractInstance.methods.recover()
-     .call({
+    .call({
       gas: 6721975,
       from: this.primaryAccount
-     })
+    })
     .then((result)=>{
       console.log(result)
       done()

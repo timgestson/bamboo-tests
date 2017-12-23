@@ -8,19 +8,19 @@ describe("test counter contract",  function(){
     let testContract = new Contract(this.web3, file)
     this.account = this.accounts[0]
     testContract.deploy({
-       from: this.account,
-       arguments: [ 20 ]
-     })
+      from: this.account,
+      arguments: [ 20 ]
+    })
     .then((contractInstance) => {
-       this.contractInstance = contractInstance
-       done()
+      this.contractInstance = contractInstance
+      done()
     })
   })
 
   it("should incremented number", function(done){
     this.contractInstance.methods.f().send({
-     from: this.account,
-     gas: 6721975
+      from: this.account,
+      gas: 6721975
     })
     .on("receipt",() => {done()})
   })
@@ -28,8 +28,8 @@ describe("test counter contract",  function(){
   it("should return an incremented number", function(done){
     this.contractInstance.methods.f().call()
     .then((value) => {
-       assert.equal(value, 22)
-       done()
+      assert.equal(value, 22)
+      done()
     })
   })
 })
