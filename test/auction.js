@@ -5,12 +5,10 @@ describe("test auction contract", function(){
   it("should create successfully", function(done){
     const file = "./contracts/00b_auction_more.bbo"
     let testContract = new Contract(this.web3, file)
-    this.primaryAccount = this.accounts[0]
-    this.secondaryAccount = this.accounts[1]
-    this.hotWallet = this.accounts[2]
+    this.account = this.accounts[0]
     testContract.deploy({
-      arguments: [this.primaryAccount, this.secondaryAccount],
-      from: this.primaryAccount 
+      arguments: [ 500, {}, 0],
+      from: this.account 
     })
     .then((contractInstance) => {
       this.contractInstance = contractInstance
