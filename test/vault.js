@@ -32,8 +32,9 @@ describe("test vault contract", function(){
       from: this.primaryAccount,
       gas: 6721975
     })
-    .on("reciept", () => {done()})
-    .on("error", done)
+    .then(()=>{
+      done()
+    })
   })
 
   it("should redeem", function(done){
