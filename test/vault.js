@@ -20,7 +20,7 @@ describe("test vault contract", function(){
 
   it("should accept money", function(done){
     this.web3.eth.sendTransaction({
-      to: this.contractInstance.address,
+      to: this.contractInstance.options.address,
       from: this.primaryAccount,
       value: 1000
     }, done)
@@ -32,8 +32,9 @@ describe("test vault contract", function(){
       from: this.primaryAccount,
       gas: 6721975
     })
-    .on("reciept", () => {done()})
-    .on("error", done)
+    .then(()=>{
+      done()
+    })
   })
 
   it("should redeem", function(done){

@@ -7,8 +7,8 @@ describe("test auction contract", function(){
     let testContract = new Contract(this.web3, file)
     this.account = this.accounts[0]
     testContract.deploy({
-      arguments: [ 500, {}, 0],
-      from: this.account 
+        from: this.account,
+        arguments: [ 0, "0xff00000000000000000000000000000000000000000000000000000400000020", 0]
     })
     .then((contractInstance) => {
       this.contractInstance = contractInstance
